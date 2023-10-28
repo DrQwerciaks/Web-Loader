@@ -14,7 +14,7 @@ Skrypt nie wymaga dodatkowych bibliotek, korzysta tylko z modułów wbudowanych 
 
 1. Otwórz terminal (wiersz poleceń).
 2. Przejdź do katalogu ze skryptem: `cd ścieżka/do/katalogu`.
-3. Uruchom skrypt: `python nazwa_skryptu.py`.
+3. Uruchom skrypt: `python MultiTabOpener.py`.
 
 Postępuj zgodnie z instrukcjami w terminalu.
 
@@ -45,7 +45,7 @@ The script does not require additional libraries and uses only Python's built-in
 
 1. Open the terminal (command line).
 2. Navigate to the script's directory: `cd path/to/directory`.
-3. Run the script: `python script_name.py`.
+3. Run the script: `python MultiTabOpener.py`.
 
 Follow the instructions in the terminal.
 
