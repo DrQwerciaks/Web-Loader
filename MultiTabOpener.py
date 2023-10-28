@@ -1,6 +1,8 @@
 import webbrowser
 from colorama import init, Fore
 import os
+import time
+
 
 init(autoreset=True)
 
@@ -31,10 +33,11 @@ def load_urls():
     with open("saved_urls.txt", "r") as file:
         return [url.strip() for url in file.readlines()]
 
-def open_multiple_tabs(urls):
+def open_multiple_tabs(urls, delay):
     for url in urls:
         try:
             webbrowser.open_new_tab(url)
+            time.sleep(delay)  # Opóźnienie w sekundach
         except webbrowser.Error:
             print("Nie udało się otworzyć przeglądarki lub karty na wskazany adres: " + url)
 
@@ -65,10 +68,11 @@ def main():
         if urls_to_open:
             try:
                 tab_count = int(input("Podaj liczbę Kart: "))
-                open_multiple_tabs(urls_to_open * tab_count)
+                delay = float(input("Podaj opóźnienie między otwieraniem kart (w sekundach): "))
+                open_multiple_tabs(urls_to_open * tab_count, delay)
                 print("Ukończono ładowanie stron.")
             except ValueError:
-                print("Podano nieprawidłową liczbę kart.")
+                print("Podano nieprawidłową liczbę kart lub opóźnienie.")
 
         if input("Czy chcesz powtórzyć działanie? (Y/N): ").upper() != "Y":
             break
