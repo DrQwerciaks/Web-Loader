@@ -42,39 +42,15 @@ def open_multiple_tabs(urls, delay):
             print("Nie udało się otworzyć przeglądarki lub karty na wskazany adres: " + url)
 
 def main():
-    print_ascii_art()
-    saved_urls = load_urls()
+    url = input("Podaj adres strony: ")
+    try:
+        tab_count = int(input("Podaj liczbę Kart: "))
+        open_multiple_tabs(url, tab_count)
+    except ValueError:
+        print("Podano nieprawidłową liczbę kart.")
 
-    while True:
-        print("1. Wpisz nowy URL")
-        print("2. Wybierz z zapisanych URL-i")
-        choice = input("Wybierz opcję (1/2): ")
-
-        urls_to_open = []
-        if choice == "1":
-            url = input("Podaj adres strony: ")
-            urls_to_open.append(url)
-            if input("Czy zapisać ten URL? (Y/N): ").upper() == "Y":
-                saved_urls.append(url)
-                save_urls(saved_urls)
-        elif choice == "2" and saved_urls:
-            for idx, url in enumerate(saved_urls):
-                print(f"{idx + 1}. {url}")
-            index = int(input("Wybierz numer URL-a: ")) - 1
-            urls_to_open.append(saved_urls[index])
-        else:
-            print("Nie ma zapisanych URL-i lub nieprawidłowy wybór.")
-
-        if urls_to_open:
-            try:
-                tab_count = int(input("Podaj liczbę Kart: "))
-                delay = float(input("Podaj opóźnienie między otwieraniem kart (w sekundach): "))
-                open_multiple_tabs(urls_to_open * tab_count, delay)
-                print("Ukończono ładowanie stron.")
-            except ValueError:
-                print("Podano nieprawidłową liczbę kart lub opóźnienie.")
-
-        if input("Czy chcesz powtórzyć działanie? (Y/N): ").upper() != "Y":
+        repeat = input("Czy chcesz powtórzyć działanie? (Y/N): ").upper()
+        if repeat != "Y":
             break
 
 if __name__ == "__main__":
