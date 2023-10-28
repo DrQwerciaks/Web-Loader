@@ -1,61 +1,71 @@
-# MultiTabOpener (PL)
+# MultiTabOpener
 
-Ten prosty skrypt Pythona pozwala użytkownikowi na otwarcie wielu kart w przeglądarce internetowej na wybrany adres URL.
+## Polski
 
-## Wymagania
+### Opis
+MultiTabOpener to skrypt Pythona do otwierania wielu kart w przeglądarce internetowej.
 
-- Python 3.x
+### Instalacja
+1. Sklonuj repozytorium lub pobierz pliki.
+2. Uruchom `install.bat` aby zainstalować wymagane biblioteki.
 
-## Instalacja
+### Użycie
+- Uruchom `MultiTabOpener.bat` aby uruchomić wersję konsolową.
+- Uruchom `MultiTabOpenerapp.bat` aby uruchomić wersję z interfejsem graficznym.
 
-Skrypt nie wymaga dodatkowych bibliotek, korzysta tylko z modułów wbudowanych w Pythona.
+### Pliki
+- `MultiTabOpener.py`: Główny skrypt konsolowy.
+- `MultiTabOpenerapp.py`: Główny skrypt z interfejsem graficznym.
+- `install.bat`: Skrypt do instalacji wymaganych bibliotek.
+- `logs.txt`: Plik do zapisywania logów.
+- `saved_urls.txt`: Plik do zapisywania URL-i.
 
-## Uruchomienie Skryptu
+## English
 
-1. Otwórz terminal (wiersz poleceń).
-2. Przejdź do katalogu ze skryptem: `cd ścieżka/do/katalogu`.
-3. Zainstaluj pip install colorama
-4. Uruchom skrypt: `python MultiTabOpener.py`.
+### Description
+MultiTabOpener is a Python script for opening multiple tabs in a web browser.
 
-Postępuj zgodnie z instrukcjami w terminalu.
+### Installation
+1. Clone the repository or download the files.
+2. Run `install.bat` to install the required libraries.
 
-## Obsługa Błędów
+### Usage
+- Run `MultiTabOpener.bat` to start the console version.
+- Run `MultiTabOpenerapp.bat` to start the GUI version.
 
-- Nieprawidłowy adres URL: Wyświetli komunikat o błędzie.
-- Problem z otwarciem karty: Wyświetli komunikat.
+### Files
+- `MultiTabOpener.py`: Main console script.
+- `MultiTabOpenerapp.py`: Main GUI script.
+- `install.bat`: Script for installing required libraries.
+- `logs.txt`: File for logging.
+- `saved_urls.txt`: File for saving URLs.
 
-## Pomoc
+# Aktualizacje
 
-W razie problemów, skontaktuj się z autorem lub zgłoś problem na GitHub.
+## Polski
 
----
+### Wersja 1.1
+- Dodano interfejs graficzny (GUI) w `MultiTabOpenerapp.py`.
+- Usunięto funkcję sprawdzania bezpieczeństwa URL za pomocą VirusTotal.
+- Poprawiono błąd związany z obsługą wyboru "Tak/Nie" w sprawdzaniu bezpieczeństwa URL.
+- Zaktualizowano skrypty startowe `MultiTabOpener.bat` i `MultiTabOpenerapp.bat` dla lepszej kompatybilności.
 
-# MultiTabOpener (EN)
+### Wersja 1.0 
+- Pierwsze wydanie.
+- Funkcjonalność otwierania wielu kart w przeglądarce.
+- Możliwość zapisywania i ładowania URL-i z pliku `saved_urls.txt`.
+- Logowanie działań do `logs.txt`.
 
-This simple Python script allows the user to open multiple tabs in a web browser to a specified URL.
+## English
 
-## Requirements
+### Version 1.1 
+- Added Graphical User Interface (GUI) in `MultiTabOpenerapp.py`.
+- Removed URL safety check feature using VirusTotal.
+- Fixed an issue with handling Yes/No choice in URL safety check.
+- Updated `MultiTabOpener.bat` and `MultiTabOpenerapp.bat` scripts for better compatibility.
 
-- Python 3.x
-
-## Installation
-
-The script does not require additional libraries and uses only Python's built-in modules.
-
-## Running the Script
-
-1. Open the terminal (command line).
-2. Navigate to the script's directory: `cd path/to/directory`.
-3. Install pip install colorama
-4. Run the script: `python MultiTabOpener.py`.
-
-Follow the instructions in the terminal.
-
-## Error Handling
-
-- Invalid URL: An error message will be displayed.
-- Problem opening a tab: An error message will be displayed.
-
-## Help
-
-If you encounter any problems, contact the author or report an issue on GitHub.
+### Version 1.0 
+- Initial release.
+- Functionality for opening multiple tabs in a web browser.
+- Ability to save and load URLs from `saved_urls.txt`.
+- Logging actions to `logs.txt`.

