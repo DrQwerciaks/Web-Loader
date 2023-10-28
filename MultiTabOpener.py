@@ -8,12 +8,18 @@ def open_multiple_tabs(url, tab_count):
         print("Nie udało się otworzyć przeglądarki lub karty na wskazany adres. Sprawdź, czy adres URL jest prawidłowy.")
 
 def main():
-    url = input("Podaj adres strony: ")
-    try:
-        tab_count = int(input("Podaj liczbę Kart: "))
-        open_multiple_tabs(url, tab_count)
-    except ValueError:
-        print("Podano nieprawidłową liczbę kart.")
+    while True:
+        url = input("Podaj adres strony: ")
+        try:
+            tab_count = int(input("Podaj liczbę Kart: "))
+            open_multiple_tabs(url, tab_count)
+            print("Ukończono ładowanie stron.")
+        except ValueError:
+            print("Podano nieprawidłową liczbę kart.")
+
+        repeat = input("Czy chcesz powtórzyć działanie? (Y/N): ").upper()
+        if repeat != "Y":
+            break
 
 if __name__ == "__main__":
     main()
